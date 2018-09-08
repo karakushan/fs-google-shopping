@@ -1,0 +1,6 @@
+{
+    "name": "karak/fs-google-merchant",
+    "require": {
+        "lukesnowden/google-shopping-feed": "dev-master"
+    }
+}
