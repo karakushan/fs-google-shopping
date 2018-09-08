@@ -45,7 +45,7 @@ add_action( 'init', 'fs_googleshopping_add_feed' );
 
 function fs_googleshopping_settings_tab( $settings ) {
 	$settings['google_shopping'] = array(
-		'name'        => __( 'Google Merchant', 'fast-shop' ),
+		'name'        => __( 'Google Shopping', 'fast-shop' ),
 		'description' => sprintf( 'Адрес вашего фида: <a href="%1$s" target="_blank">%1$s</a>. </br> На мультиязычном сайте необходимо добавить приставку языка, например для ua : %2$s и т.д.. <br> <b>ВНИМАНИЕ!</b> Если ссылка не работает, попробуйте пересохранить <a href="%3$s">настройки постоянных ссылок</a>.<br> Если пермалинки выключены можно использовать ссылку типа <a href="%4$s" target="_blank">%4$s</a>', esc_url( home_url( 'feed/' . FS_GOOGLE_SHOPING_FEED . '/' ) ), esc_url( home_url( 'ua/feed/' . FS_GOOGLE_SHOPING_FEED . '/' ) ), esc_url( admin_url( 'options-permalink.php' ) ), esc_url( add_query_arg( array( 'feed' => FS_GOOGLE_SHOPING_FEED ), home_url() ) ) ),
 		'fields'      => array(
 			array(
