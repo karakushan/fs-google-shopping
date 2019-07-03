@@ -153,7 +153,9 @@ function fs_googleshopping_do_feed() {
 // Дополнительные настройки категорий товаров
 add_filter( 'fs_taxonomy_fields', 'fs_gs_taxonomy_fields' );
 function fs_gs_taxonomy_fields( $fields ) {
-	$fields['catalog'] = array(
+
+
+	$fields['catalog']=array_merge($fields['catalog'],array(
 		'_google_shopping_exclude' => array(
 			'name' => __( 'Exclude Google Shopping feed', 'fs-google-shopping' ),
 			'help' => __( 'Products will also be excluded from child categories.', 'fs-google-shopping' ),
@@ -166,7 +168,7 @@ function fs_gs_taxonomy_fields( $fields ) {
 			'help' => __( 'You can specify multiple categories, separated by commas. <a href="http://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.xls" download="taxonomy-with-ids.en-US.xls">Скачать список категорий</a>', 'fs-google-shopping' ),
 			'args' => array()
 		)
-	);
+	));
 
 	return $fields;
 
