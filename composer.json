@@ -1,6 +1,12 @@
 {
     "name": "karak/fs-google-merchant",
     "require": {
-        "lukesnowden/google-shopping-feed": "dev-master"
-    }
+    },
+  "autoload": {
+  "psr-4": {
+    "FS_Google_Shopping\\": "class"
+  },
+  "files": [
+  ]
+}
 }

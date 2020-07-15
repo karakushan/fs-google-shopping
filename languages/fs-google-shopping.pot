@@ -1,0 +1,84 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: F-SHOP Google Shopping\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-15 20:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
+
+#: class/Feed.php:184
+msgid "General information"
+msgstr ""
+
+#: class/Settings.php:18
+msgid "Google Shopping"
+msgstr ""
+
+#: class/Settings.php:24
+msgid "Item Currency Code"
+msgstr ""
+
+#: class/Settings.php:25
+msgid "For example: USD, UAH"
+msgstr ""
+
+#: class/Settings.php:31
+msgid "Use the meta field to get product description"
+msgstr ""
+
+#: class/Settings.php:32
+msgid "If you want to display a description of excellent from the main content"
+msgstr ""
+
+#: class/Settings.php:38
+msgid "The name of the metafield of the product description"
+msgstr ""
+
+#: class/Settings.php:44
+msgid "Default Google Category ID"
+msgstr ""
+
+#: class/Settings.php:65
+msgid "Exclude Google Shopping feed"
+msgstr ""
+
+#: class/Settings.php:66
+msgid "Products will also be excluded from child categories."
+msgstr ""
+
+#: class/Settings.php:71
+msgid "Google Shopping category ID"
+msgstr ""
+
+#: class/Settings.php:73
+msgid ""
+"You can specify multiple categories, separated by commas. <a href=\"http:"
+"//www.google.com/basepages/producttype/taxonomy-with-ids.en-US.xls\" "
+"download=\"taxonomy-with-ids.en-US.xls\">Скачать список категорий</a>"
+msgstr ""
+
+#. Name of the plugin
+msgid "F-SHOP Google Shopping"
+msgstr ""
+
+#. Description of the plugin
+msgid "Creates a feed Google Shopping. Integration with F-SHOP."
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://f-shop.top/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Vitaliy Karakushan"
+msgstr ""

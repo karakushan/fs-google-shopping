@@ -6,27 +6,25 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit436cfde5f03aa43c9ac93dad2e6fa89e
 {
-    public static $prefixesPsr0 = array (
-        'L' => 
+    public static $prefixLengthsPsr4 = array (
+        'F' => 
         array (
-            'LukeSnowden\\GoogleShoppingFeed' => 
-            array (
-                0 => __DIR__ . '/..' . '/lukesnowden/google-shopping-feed/src',
-            ),
+            'FS_Google_Shopping\\' => 19,
         ),
-        'G' => 
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'FS_Google_Shopping\\' => 
         array (
-            'Gregwar\\Cache' => 
-            array (
-                0 => __DIR__ . '/..' . '/gregwar/cache',
-            ),
+            0 => __DIR__ . '/../..' . '/class',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInit436cfde5f03aa43c9ac93dad2e6fa89e::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit436cfde5f03aa43c9ac93dad2e6fa89e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit436cfde5f03aa43c9ac93dad2e6fa89e::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
