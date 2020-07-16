@@ -178,6 +178,18 @@ class Feed
 				$item_mpn = $xml->createElement("g:mpn",fs_get_product_code());
 				$item->appendChild($item_mpn);
 
+				// item g:gtin
+//				$item_gtin = $xml->createElement("g:gtin",fs_get_product_code());
+//				$item->appendChild($item_gtin);
+
+				// item g:availability
+				$item_availability = $xml->createElement("g:availability",fs_aviable_product()? 'in_stock':'out_of_stock');
+				$item->appendChild($item_availability);
+
+				// item g:condition
+				$item_condition = $xml->createElement("g:condition",'new');
+				$item->appendChild($item_condition);
+
 				// item g:google_product_category
 				$product_terms = get_the_terms($post->ID, FS_Config::get_data('product_taxonomy'));
 				$cat_id_exists = false;
