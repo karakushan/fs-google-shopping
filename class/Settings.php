@@ -39,13 +39,6 @@ class Settings
 					'value' => fs_option('fs_gs_description_meta')
 				),
 				array(
-					'type' => 'text',
-					'name' => 'fs_gs_brand',
-					'label' => __('Default Brand', 'fs-google-shopping'),
-					'help' => __('Added to the feed if a brand is selected for the product or the field is filled here', 'fs-google-shopping'),
-					'value' => fs_option('fs_gs_brand')
-				),
-				array(
 					'type' => 'select',
 					'name' => 'fs_google_product_category_id',
 					'label' => __('Default Google Category ID', 'fs-google-shopping'),

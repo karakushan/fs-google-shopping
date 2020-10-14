@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: F-SHOP Google Shopping\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-20 12:26+0000\n"
-"PO-Revision-Date: 2020-07-20 12:27+0000\n"
+"POT-Creation-Date: 2020-07-15 20:14+0000\n"
+"PO-Revision-Date: 2020-07-15 20:14+0000\n"
 "Last-Translator: Виталий Каракушан\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.0; wp-5.4.2"
 
-#: class/Feed.php:237
+#: class/Feed.php:184
 msgid "General information"
 msgstr "Общие сведения"
 
@@ -46,33 +46,22 @@ msgid "The name of the metafield of the product description"
 msgstr "Ключ мета поля которое используется для описания товара"
 
 #: class/Settings.php:44
-msgid "Default Brand"
-msgstr "Бренд по умолчанию"
-
-#: class/Settings.php:45
-#, fuzzy
-msgid ""
-"Added to the feed if a brand is selected for the product or the field is "
-"filled here"
-msgstr "Добавляется в фид если выбран бренд у товара или заполнено поле здесь"
-
-#: class/Settings.php:51
 msgid "Default Google Category ID"
 msgstr "Категория Google по умолчанию"
 
-#: class/Settings.php:72
+#: class/Settings.php:65
 msgid "Exclude Google Shopping feed"
 msgstr "Исключить из фида"
 
-#: class/Settings.php:73
+#: class/Settings.php:66
 msgid "Products will also be excluded from child categories."
 msgstr "Товары также будут исключены из дочерних категорий"
 
-#: class/Settings.php:78
+#: class/Settings.php:71
 msgid "Google Shopping category ID"
 msgstr "Категория Google"
 
-#: class/Settings.php:80
+#: class/Settings.php:73
 msgid ""
 "You can specify multiple categories, separated by commas. <a href=\"http:"
 "//www.google.com/basepages/producttype/taxonomy-with-ids.en-US.xls\" "

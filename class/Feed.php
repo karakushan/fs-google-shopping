@@ -93,8 +93,6 @@ class Feed
 	{
 		header('Content-type: text/xml');
 
-		$currency=fs_option('fs_gs_currency_code', 'USD');
-
 		// XML
 		$xml = new domDocument("1.0", "utf-8");
 		$xml->formatOutput = true;
@@ -145,6 +143,7 @@ class Feed
 			while ($products->have_posts()) {
 				$products->the_post();
 
+
 				// item
 				$item = $xml->createElement("item");
 				$channel->appendChild($item);
@@ -172,15 +171,8 @@ class Feed
 				$item->appendChild($item_image_link);
 
 				// item g:price
-				$price=floatval(fs_get_price($post->ID));
-				$item_price = $xml->createElement("g:price", $price. ' ' . $currency);
+				$item_price = $xml->createElement("g:price", fs_get_product_id() . ' ' . fs_option('fs_gs_currency_code', 'USD'));
 				$item->appendChild($item_price);
-
-				// item g:sale_price
-				if ($sale_price=fs_get_base_price()){
-					$item_sale_price = $xml->createElement("g:sale_price", $sale_price. ' ' . $currency);
-					$item->appendChild($item_sale_price);
-				}
 
 				// item g:mpn
 				$item_mpn = $xml->createElement("g:mpn",fs_get_product_code());
@@ -197,12 +189,6 @@ class Feed
 				// item g:condition
 				$item_condition = $xml->createElement("g:condition",'new');
 				$item->appendChild($item_condition);
-
-				// item g:brand
-				if (fs_option('fs_gs_brand')){
-					$item_brand = $xml->createElement("g:brand",fs_option('fs_gs_brand'));
-					$item->appendChild($item_brand);
-				}
 
 				// item g:google_product_category
 				$product_terms = get_the_terms($post->ID, FS_Config::get_data('product_taxonomy'));
