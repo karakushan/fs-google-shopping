@@ -90,7 +90,7 @@ class Feed {
 				$item->appendChild( $item_image_link );
 
 				// item g:price
-				$item_price = $xml->createElement( "g:price", fs_get_product_id() . ' ' . fs_option( 'fs_gs_currency_code', 'USD' ) );
+				$item_price = $xml->createElement( "g:price", fs_get_price($post->ID) . ' ' . fs_option( 'fs_gs_currency_code', 'USD' ) );
 				$item->appendChild( $item_price );
 
 				// item g:mpn
@@ -102,7 +102,7 @@ class Feed {
 //				$item->appendChild($item_gtin);
 
 				// item g:availability
-				$item_availability = $xml->createElement( "g:availability", fs_aviable_product() ? 'in_stock' : 'out_of_stock' );
+				$item_availability = $xml->createElement( "g:availability", fs_in_stock() ? 'in_stock' : 'out_of_stock' );
 				$item->appendChild( $item_availability );
 
 				// item g:condition
