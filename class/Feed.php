@@ -78,7 +78,7 @@ class Feed {
 				$item->appendChild( $item_description );
 				$description = apply_filters( 'fs_product_description', $post->post_content, $post->ID );
 				$description = apply_filters( 'the_content', sanitize_text_field( $description ) );
-				$cdata       = $xml->createCDATASection( $description );
+				$cdata       = $xml->createCDATASection( self::clean_html($description ));
 				$item_description->appendChild( $cdata );
 
 				// item  link
@@ -162,4 +162,13 @@ class Feed {
 		exit;
 	}
 
+	public static function clean_html( $text ) {
+		$text = html_entity_decode( $text );
+		$text = strip_tags( $text );
+		$text = preg_replace( "/(\n(\s*)\n)/", "\n\n", $text );
+		$text = preg_replace( "/\n\n+/", "\n", $text );
+		$text = str_replace(PHP_EOL, ' ', $text);
+
+		return $text;
+	}
 }
