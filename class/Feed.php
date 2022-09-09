@@ -78,7 +78,7 @@ class Feed {
 				$item->appendChild( $item_description );
 				$description = apply_filters( 'fs_product_description', $post->post_content, $post->ID );
 				$description = apply_filters( 'the_content', sanitize_text_field( $description ) );
-				$cdata       = $xml->createCDATASection( self::clean_html($description ));
+				$cdata       = $xml->createCDATASection( self::clean_html( $description ) );
 				$item_description->appendChild( $cdata );
 
 				// item  link
@@ -90,7 +90,7 @@ class Feed {
 				$item->appendChild( $item_image_link );
 
 				// item g:price
-				$item_price = $xml->createElement( "g:price", fs_get_price($post->ID) . ' ' . fs_option( 'fs_gs_currency_code', 'USD' ) );
+				$item_price = $xml->createElement( "g:price", fs_get_price( $post->ID ) . ' ' . fs_option( 'fs_gs_currency_code', 'USD' ) );
 				$item->appendChild( $item_price );
 
 				// item g:mpn
@@ -108,6 +108,24 @@ class Feed {
 				// item g:condition
 				$item_condition = $xml->createElement( "g:condition", 'new' );
 				$item->appendChild( $item_condition );
+
+				// item g:brand
+				$brand_attributes = apply_filters( 'fs_gs_brand_attributes', [] );
+				$brand            = '';
+				$product_terms    = ! empty( $brand_attributes ) ? get_the_terms( $post, FS_Config::get_data( 'features_taxonomy' ) ) : [];
+				if ( ! empty( $product_terms ) ) {
+					foreach ( $product_terms as $term ) {
+						if ( in_array( $term->parent, $brand_attributes ) ) {
+							$brand = $term->name;
+							break;
+						}
+					}
+				}
+
+				if ( $brand ) {
+					$item_brand = $xml->createElement( "g:brand", $brand );
+					$item->appendChild( $item_brand );
+				}
 
 				// item g:google_product_category
 				$product_terms = get_the_terms( $post->ID, FS_Config::get_data( 'product_taxonomy' ) );
@@ -129,6 +147,16 @@ class Feed {
 					$item_product_category = $xml->createElement( "g:google_product_category", intval( $default_category_id ) );
 					$item->appendChild( $item_product_category );
 				}
+
+				// g:product_type
+				$categories = [ __( 'Home', 'fs-google-shopping' ), __( 'Products', 'fs-google-shopping' ) ];
+				if ( $product_terms ) {
+					foreach ( $product_terms as $key => $product_term ) {
+						$categories[] = $product_term->name;
+					}
+				}
+				$item_product_type = $xml->createElement( "g:product_type", implode( ' > ', $categories ) );
+				$item->appendChild( $item_product_type );
 
 				// item g:product_detail
 				$attributes = get_the_terms( get_the_ID(), FS_Config::get_data( 'features_taxonomy' ) );
@@ -167,7 +195,7 @@ class Feed {
 		$text = strip_tags( $text );
 		$text = preg_replace( "/(\n(\s*)\n)/", "\n\n", $text );
 		$text = preg_replace( "/\n\n+/", "\n", $text );
-		$text = str_replace(PHP_EOL, ' ', $text);
+		$text = str_replace( PHP_EOL, ' ', $text );
 
 		return $text;
 	}
