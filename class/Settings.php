@@ -44,7 +44,14 @@ class Settings
 					'label' => __('Default Google Category ID', 'fs-google-shopping'),
 					'value' => fs_option('fs_google_product_category_id'),
 					'values' => self::parse_taxonomies()
-				)
+				),
+				array(
+					'type' => 'checkbox',
+					'name' => 'fs_gs_multilang_single',
+					'label' => __('Multilingual feed', 'fs-google-shopping'),
+					'help' => __('Products in different languages will be displayed in one feed', 'fs-google-shopping'),
+					'value' => fs_option('fs_gs_multilang_single')
+				),
 
 			)
 		);
