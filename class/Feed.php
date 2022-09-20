@@ -15,8 +15,8 @@ class Feed {
 	public $products;
 
 	public function __construct() {
-		$this->multilang_single       = (bool) fs_option( 'fs_gs_multilang_single' );
-		$this->languages              = apply_filters( 'fs_gs_languages', [] );
+		$this->multilang_single = (bool) fs_option( 'fs_gs_multilang_single' );
+		$this->languages        = apply_filters( 'fs_gs_languages', [] );
 		// XML
 		$this->xml                     = new domDocument( '1.0', 'UTF-8' );
 		$this->xml->formatOutput       = true;
@@ -105,7 +105,7 @@ class Feed {
 			}
 
 			// item g:id
-			$item_id = $this->xml->createElement( "g:id", get_the_ID() );
+			$item_id = $this->xml->createElement( "g:id", $language ? $language . get_the_ID() : '' );
 			$item->appendChild( $item_id );
 
 			// item title
