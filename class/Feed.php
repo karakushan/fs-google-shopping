@@ -62,6 +62,14 @@ class Feed {
 					'terms'            => $exclude_cats,
 					'include_children' => true
 				)
+			),
+			'meta_query'     => array(
+				array(
+					'key'     => FS_Config::get_meta( 'price' ),
+					'value'   => 0,
+					'compare' => '>',
+					'type'    => 'NUMERIC'
+				)
 			)
 		) );
 
