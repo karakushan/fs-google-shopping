@@ -211,7 +211,7 @@ class Feed {
 			// item g:product_detail
 			$attributes = get_the_terms( get_the_ID(), FS_Config::get_data( 'features_taxonomy' ) );
 			foreach ( $attributes as $attribute ) {
-				if ( ! $attribute->parent ) {
+				if ( ! $attribute->parent || $attribute->name == '' ) {
 					continue;
 				}
 
