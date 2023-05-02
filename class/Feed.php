@@ -82,10 +82,8 @@ class Feed {
 					$this->gtag_items( $language );
 				}
 			} else {
-
+				$this->gtag_items( );
 			}
-
-
 		}
 
 
@@ -108,7 +106,7 @@ class Feed {
 
 			if ( $language ) {
 				// custom label
-				$custom_label = $this->xml->createElement( "g:custom_label_0", $language );
+				$custom_label = $this->xml->createElement( "g:custom_label_0", mb_strtoupper($language) );
 				$item->appendChild( $custom_label );
 			}
 
@@ -207,6 +205,14 @@ class Feed {
 			}
 			$item_product_type = $this->xml->createElement( "g:product_type", implode( ' > ', $categories ) );
 			$item->appendChild( $item_product_type );
+
+			// item g:unit_pricing_measure
+			if(fs_get_product_min_qty($post->ID) > 1 ){
+				$item_unit_pricing_measure = $this->xml->createElement( "g:unit_pricing_measure",fs_get_product_min_qty($post->ID).'ct' );
+				$item_unit_pricing_base_measure = $this->xml->createElement( "g:unit_pricing_base_measure",fs_get_product_min_qty($post->ID) );
+				$item->appendChild( $item_unit_pricing_measure );
+				$item->appendChild( $item_unit_pricing_base_measure );
+			}
 
 			// item g:product_detail
 			$attributes = get_the_terms( get_the_ID(), FS_Config::get_data( 'features_taxonomy' ) );
