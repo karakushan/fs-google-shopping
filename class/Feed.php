@@ -111,7 +111,7 @@ class Feed {
 			}
 
 			// item g:id
-			$item_id = $this->xml->createElement( "g:id", $language ? $language . get_the_ID() : '' );
+			$item_id = $this->xml->createElement( "g:id", $language ? $language . get_the_ID() : get_the_ID() );
 			$item->appendChild( $item_id );
 
 			// item title
