@@ -82,7 +82,7 @@ class Feed {
 					$this->gtag_items( $language );
 				}
 			} else {
-				$this->gtag_items( );
+				$this->gtag_items();
 			}
 		}
 
@@ -106,7 +106,7 @@ class Feed {
 
 			if ( $language ) {
 				// custom label
-				$custom_label = $this->xml->createElement( "g:custom_label_0", mb_strtoupper($language) );
+				$custom_label = $this->xml->createElement( "g:custom_label_0", mb_strtoupper( $language ) );
 				$item->appendChild( $custom_label );
 			}
 
@@ -135,7 +135,8 @@ class Feed {
 			$item->appendChild( $item_image_link );
 
 			// item g:price
-			$item_price = $this->xml->createElement( "g:price", fs_get_price( $post->ID ) . ' ' . fs_option( 'fs_gs_currency_code', 'USD' ) );
+			$price = fs_get_product_min_qty( $post->ID ) > 1 ? fs_get_price( $post->ID ) * fs_get_product_min_qty( $post->ID ) : fs_get_price( $post->ID );
+			$item_price = $this->xml->createElement( "g:price", $price . ' ' . fs_option( 'fs_gs_currency_code', 'USD' ) );
 			$item->appendChild( $item_price );
 
 			// item g:mpn
@@ -207,9 +208,9 @@ class Feed {
 			$item->appendChild( $item_product_type );
 
 			// item g:unit_pricing_measure
-			if(fs_get_product_min_qty($post->ID) > 1 ){
-				$item_unit_pricing_measure = $this->xml->createElement( "g:unit_pricing_measure",fs_get_product_min_qty($post->ID).'ct' );
-				$item_unit_pricing_base_measure = $this->xml->createElement( "g:unit_pricing_base_measure",fs_get_product_min_qty($post->ID) );
+			if ( fs_get_product_min_qty( $post->ID ) > 1 ) {
+				$item_unit_pricing_measure      = $this->xml->createElement( "g:unit_pricing_measure", '500 шт.' );
+				$item_unit_pricing_base_measure = $this->xml->createElement( "g:unit_pricing_base_measure", '1 шт.' );
 				$item->appendChild( $item_unit_pricing_measure );
 				$item->appendChild( $item_unit_pricing_base_measure );
 			}
