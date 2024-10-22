@@ -51,7 +51,7 @@ class Feed {
 		global $wpdb;
 		$exclude_cats   = $wpdb->get_col( "SELECT term_id FROM $wpdb->termmeta WHERE meta_key='_google_shopping_exclude' AND meta_value='1'" );
 		$this->products = new \WP_Query( array(
-			'post_type'      => 'product',
+			'post_type'      => FS_Config::get_data( 'post_type' ),
 			'posts_per_page' => - 1,
 			'post_status'    => 'publish',
 			'tax_query'      => array(
@@ -64,12 +64,12 @@ class Feed {
 				)
 			),
 			'meta_query'     => array(
-				array(
-					'key'     => FS_Config::get_meta( 'price' ),
-					'value'   => 0,
-					'compare' => '>',
-					'type'    => 'NUMERIC'
-				)
+//				array(
+//					'key'     => FS_Config::get_meta( 'price' ),
+//					'value'   => 0,
+//					'compare' => '>',
+//					'type'    => 'NUMERIC'
+//				)
 			)
 		) );
 
@@ -135,7 +135,7 @@ class Feed {
 			$item->appendChild( $item_image_link );
 
 			// item g:price
-			$price = fs_get_product_min_qty( $post->ID ) > 1 ? fs_get_price( $post->ID ) * fs_get_product_min_qty( $post->ID ) : fs_get_price( $post->ID );
+			$price      = fs_get_product_min_qty( $post->ID ) > 1 ? fs_get_price( $post->ID ) * fs_get_product_min_qty( $post->ID ) : fs_get_price( $post->ID );
 			$item_price = $this->xml->createElement( "g:price", $price . ' ' . fs_option( 'fs_gs_currency_code', 'USD' ) );
 			$item->appendChild( $item_price );
 
