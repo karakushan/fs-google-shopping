@@ -152,7 +152,8 @@ class Feed {
 			$item->appendChild( $item_availability );
 
 			// item g:condition
-			$item_condition = $this->xml->createElement( "g:condition", 'new' );
+			$condition      = get_post_meta( $post->ID, 'fs_gs_product_condition', true ) ? get_post_meta( $post->ID, 'fs_gs_product_condition', true ) : 'new';
+			$item_condition = $this->xml->createElement( "g:condition", apply_filters( 'fs_gs_product_condition', $condition, $post->ID ) );
 			$item->appendChild( $item_condition );
 
 			// item g:brand
