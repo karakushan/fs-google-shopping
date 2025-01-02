@@ -3,8 +3,6 @@
 
 namespace FS_Google_Shopping;
 
-use FS\FS_Config;
-
 class Google_Shopping {
 	public function __construct() {
 		add_action( 'init', [ $this, 'add_feed' ] );
