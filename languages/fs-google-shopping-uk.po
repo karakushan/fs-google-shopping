@@ -19,6 +19,14 @@ msgstr ""
 msgid "Condition"
 msgstr "Стан"
 
+#: class/Google_Shopping.php:35
+msgid "Exclude from export file"
+msgstr "Виключити з файлу експорту"
+
+#: class/Google_Shopping.php:37
+msgid "If checked, this product will be excluded from Google Shopping feed"
+msgstr "Якщо позначено, цей товар буде виключений з фіду Google Shopping"
+
 #. Description of the plugin
 msgid "Creates a feed Google Shopping. Integration with F-SHOP."
 msgstr "Допомагає створити фід Google Shopping. Інтеграція з плагіном F-SHOP."
