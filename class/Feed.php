@@ -94,6 +94,26 @@ class Feed
         while ($this->products->have_posts()) {
             $this->products->the_post();
 
+            // Переконуємося, що у фід потрапляють тільки опубліковані товари
+            if (get_post_status($post->ID) !== 'publish') {
+                continue;
+            }
+
+            // Спочатку перевіряємо наявність зображення
+            $image_url = get_the_post_thumbnail_url($post, 'full');
+            if (empty($image_url)) {
+                $gallery_ids = \FS\FS_Images_Class::get_gallery($post->ID, false);
+                if (!empty($gallery_ids)) {
+                    $first_gallery_image_id = reset($gallery_ids);
+                    $image_url = wp_get_attachment_image_url($first_gallery_image_id, 'full');
+                }
+            }
+
+            // Якщо зображення не знайдено, пропускаємо товар
+            if (empty($image_url)) {
+                continue;
+            }
+
             // item
             $item = $this->xml->createElement('item');
             $this->channel->appendChild($item);
@@ -118,8 +138,8 @@ class Feed
             $item_link = $this->xml->createElement('link', get_the_permalink());
             $item->appendChild($item_link);
 
-            // item  g:image_link
-            $item_image_link = $this->xml->createElement('g:image_link', get_the_post_thumbnail_url($post, 'full'));
+            // item  g:image_link - використовуємо вже отриманий URL
+            $item_image_link = $this->xml->createElement('g:image_link', $image_url);
             $item->appendChild($item_image_link);
 
             // item g:price
