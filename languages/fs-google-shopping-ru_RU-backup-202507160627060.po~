@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: F-SHOP Google Shopping\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-15 20:14+0000\n"
-"PO-Revision-Date: 2025-07-16 06:27+0000\n"
+"PO-Revision-Date: 2024-11-23 07:37+0000\n"
 "Last-Translator: Виталий Каракушан\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -15,28 +15,28 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.0; wp-5.4.2"
 
-#: class/Settings.php:46
-msgid "Brand attribute"
-msgstr "Атрибут бренда"
-
-#: class/Google_Shopping.php:25
+#: class/Google_Shopping.php:22
 msgid "Condition"
 msgstr "Состояние"
+
+#: class/Google_Shopping.php:35
+msgid "Exclude from export file"
+msgstr "Исключить из файла экспорта"
+
+#: class/Google_Shopping.php:37
+msgid "If checked, this product will be excluded from Google Shopping feed"
+msgstr "Если отмечено, этот товар будет исключён из фида Google Shopping"
 
 #. Description of the plugin
 msgid "Creates a feed Google Shopping. Integration with F-SHOP."
 msgstr ""
 "Создает фид товаров, ссылку на который можно добавить в Google Merchant"
 
-#: class/Settings.php:39
+#: class/Settings.php:44
 msgid "Default Google Category ID"
 msgstr "Категория Google по умолчанию"
 
-#: class/Google_Shopping.php:35
-msgid "Exclude from export file"
-msgstr "Исключить из файла экспорта"
-
-#: class/Settings.php:71
+#: class/Settings.php:72
 msgid "Exclude Google Shopping feed"
 msgstr "Исключить из фида"
 
@@ -44,23 +44,23 @@ msgstr "Исключить из фида"
 msgid "F-SHOP Google Shopping"
 msgstr ""
 
-#: class/Settings.php:20
+#: class/Settings.php:25
 msgid "For example: USD, UAH"
 msgstr "Например: USD, UAH"
 
-#: class/Feed.php:241
+#: class/Feed.php:230
 msgid "General information"
 msgstr "Общие сведения"
 
-#: class/Settings.php:13 class/Google_Shopping.php:22
+#: class/Settings.php:18
 msgid "Google Shopping"
 msgstr ""
 
-#: class/Settings.php:77
+#: class/Settings.php:78
 msgid "Google Shopping category ID"
 msgstr "Категория Google"
 
-#: class/Feed.php:211
+#: class/Feed.php:200
 msgid "Home"
 msgstr "Главная"
 
@@ -69,57 +69,49 @@ msgstr "Главная"
 msgid "https://f-shop.top/"
 msgstr ""
 
-#: class/Google_Shopping.php:37
-msgid "If checked, this product will be excluded from Google Shopping feed"
-msgstr "Если отмечено, этот товар будет исключён из фида Google Shopping"
-
-#: class/Settings.php:27
+#: class/Settings.php:32
 msgid "If you want to display a description of excellent from the main content"
 msgstr ""
 "Если вы хотите добавить в фид описание которое отличается от отображаемого "
 "на сайте"
 
-#: class/Settings.php:19
+#: class/Settings.php:24
 msgid "Item Currency Code"
 msgstr "Код валюты"
 
-#: class/Settings.php:54
+#: class/Settings.php:51
 msgid "Multilingual feed"
 msgstr "Мультиязычный фид"
 
-#: class/Google_Shopping.php:29
+#: class/Google_Shopping.php:26
 msgid "New"
 msgstr "Новый"
 
-#: class/Feed.php:212
+#: class/Feed.php:201
 msgid "Products"
 msgstr "Товары"
 
-#: class/Settings.php:55
+#: class/Settings.php:52
 msgid "Products in different languages will be displayed in one feed"
 msgstr "Товары на разных языках будут отображаться в одной ленте"
 
-#: class/Settings.php:72
+#: class/Settings.php:73
 msgid "Products will also be excluded from child categories."
 msgstr "Товары также будут исключены из дочерних категорий"
 
-#: class/Google_Shopping.php:31
+#: class/Google_Shopping.php:28
 msgid "Refurbished"
 msgstr "Восстановленный"
 
-#: class/Settings.php:47
-msgid "Select the product attribute that is responsible for the brand."
-msgstr "Выберите атрибут продукта, отвечающий за бренд."
-
-#: class/Settings.php:33
+#: class/Settings.php:38
 msgid "The name of the metafield of the product description"
 msgstr "Ключ мета поля которое используется для описания товара"
 
-#: class/Settings.php:26
+#: class/Settings.php:31
 msgid "Use the meta field to get product description"
 msgstr "Использовать мета поля для получения описания товара"
 
-#: class/Google_Shopping.php:30
+#: class/Google_Shopping.php:27
 msgid "Used"
 msgstr "Использованный"
 
@@ -127,7 +119,7 @@ msgstr "Использованный"
 msgid "Vitaliy Karakushan"
 msgstr "Виталий Каракушан"
 
-#: class/Settings.php:79
+#: class/Settings.php:80
 msgid ""
 "You can specify multiple categories, separated by commas. <a href=\"http:"
 "//www.google.com/basepages/producttype/taxonomy-with-ids.en-US.xls\" "
