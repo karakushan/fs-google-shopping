@@ -41,6 +41,14 @@ class Settings
                     'values' => self::parse_taxonomies(),
                 ],
                 [
+                    'type' => 'select',
+                    'name' => 'fs_gs_brand_taxonomy_id',
+                    'label' => __('Brand attribute', 'fs-google-shopping'),
+                    'help' => __('Select the product attribute that is responsible for the brand.', 'fs-google-shopping'),
+                    'value' => fs_option('fs_gs_brand_taxonomy_id'),
+                    'values' => self::get_brand_terms(),
+                ],
+                [
                     'type' => 'checkbox',
                     'name' => 'fs_gs_multilang_single',
                     'label' => __('Multilingual feed', 'fs-google-shopping'),
@@ -74,6 +82,34 @@ class Settings
         ]);
 
         return $fields;
+    }
+
+    /**
+     * Gets a list of attribute terms for selecting a brand.
+     *
+     * @return array
+     */
+    private static function get_brand_terms()
+    {
+        $brand_terms = [];
+        $taxonomy = \FS\FS_Config::get_data('features_taxonomy');
+        if (!$taxonomy) {
+            return $brand_terms;
+        }
+
+        $terms = get_terms([
+            'taxonomy' => $taxonomy,
+            'hide_empty' => false,
+            'parent' => 0,
+        ]);
+
+        if (!is_wp_error($terms) && !empty($terms)) {
+            foreach ($terms as $term) {
+                $brand_terms[$term->term_id] = $term->name;
+            }
+        }
+
+        return $brand_terms;
     }
 
     /**

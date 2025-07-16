@@ -165,14 +165,17 @@ class Feed
             $item->appendChild($item_condition);
 
             // item g:brand
-            $brand_attributes = apply_filters('fs_gs_brand_attributes', []);
+            $brand_parent_term_id = fs_option('fs_gs_brand_taxonomy_id');
             $brand = '';
-            $product_terms = !empty($brand_attributes) ? get_the_terms($post, FS_Config::get_data('features_taxonomy')) : [];
-            if (!empty($product_terms)) {
-                foreach ($product_terms as $term) {
-                    if (in_array($term->parent, $brand_attributes)) {
-                        $brand = $term->name;
-                        break;
+
+            if ($brand_parent_term_id) {
+                $product_terms = get_the_terms($post, FS_Config::get_data('features_taxonomy'));
+                if (!empty($product_terms)) {
+                    foreach ($product_terms as $term) {
+                        if ($term->parent == $brand_parent_term_id) {
+                            $brand = $term->name;
+                            break;
+                        }
                     }
                 }
             }
